@@ -1,0 +1,9 @@
+module OrderApp{
+	interface Order{
+
+		string view_menu();
+		string place_order(in string usrName, in short friedChickenQuant, in short colaQuant);
+		string check_order_status(in string usrName);
+  		oneway void shutdown();
+	};
+};
