@@ -4,6 +4,7 @@ module OrderApp{
 		string view_menu();
 		string place_order(in string usrName, in short friedChickenQuant, in short colaQuant);
 		string check_order_status(in string usrName);
+		string view_current_orders();
   		oneway void shutdown();
 	};
-};
+};	

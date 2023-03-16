@@ -28,6 +28,8 @@ public class OrderClient
         System.out.println(orderImpl.view_menu());
 		short a = 5;
 		System.out.println(orderImpl.place_order("ammar", a, a));
+		System.out.println(orderImpl.check_order_status("ammar"));
+		System.out.println(orderImpl.view_current_orders());
         orderImpl.shutdown();
 
 	} catch (Exception e) {
