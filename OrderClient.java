@@ -51,10 +51,10 @@ public class OrderClient
     } else {
       orderImpl.login(userName);
       System.out.println("Welcome " + userName);
-      System.out.println("Enter digits below to complete the corresponding actions: ");
-      System.out.println("1: View Menu\n 2: Place Order\n 3: Check Order Status\n 4: Log Out");
 
       while(userInput != 4) {
+        System.out.println("\nEnter digits below to complete the corresponding actions: ");
+        System.out.println(" 1: View Menu\n 2: Place Order\n 3: Check Order Status\n 4: Log Out");
         userInput = Integer.valueOf(getInput());
 
         switch(userInput) {
@@ -77,16 +77,9 @@ public class OrderClient
 
     }
     
-
-    // while(userInput != 5) {
-
-    //   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		//   String s = br.readLine();
-    // }
-
 	}
 
-  	public static String getInput() throws IOException {
+  public static String getInput() throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String s = br.readLine();
 		return s;
