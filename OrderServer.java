@@ -6,6 +6,7 @@ import org.omg.PortableServer.*;
 import org.omg.PortableServer.POA;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.*;
 
 import java.util.Properties;
 
@@ -42,7 +43,8 @@ class OrderStatus {
 
 class OrderImpl extends OrderPOA {
   private ORB orb;
-  private Map<String,OrderStatus> currentOrders = new HashMap<>();//map username to bankaccount
+  private Map<String,OrderStatus> currentOrders = new HashMap<>();
+  private List<String> usersLoggedIn = new ArrayList<>();
   private int chickenPrice = 5;
   private int colaPrice = 1;
 
@@ -71,10 +73,19 @@ class OrderImpl extends OrderPOA {
 	"\nTotal Price: " + currentOrder.gettotalPrice();
   }
 
-    // implement check_order_status() method
+  // implement check_order_status() method
   public String view_current_orders() {
-	int numOrders = currentOrders.size();
+	  int numOrders = currentOrders.size();
     return "Num Orders: " + numOrders; 
+  }
+
+  public void login(String userName) {
+    usersLoggedIn.add(userName);
+  }
+
+  // implement check_order_status() method
+  public boolean is_manager_logged_in() {
+    return usersLoggedIn.contains("manager"); 
   }
     
   // implement shutdown() method

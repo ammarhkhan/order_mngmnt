@@ -47,8 +47,15 @@ public class OrderClient
 		String userName = getInput();
 
     if(userName.equals("manager")){
-      System.out.println("Welcome Manager");
+      if(orderImpl.is_manager_logged_in()){
+        System.out.println("Manager Already Logged In");
+      } else {
+        orderImpl.login(userName);
+        System.out.println("Welcome Manager");
+      }
+      
     } else {
+      orderImpl.login(userName);
       System.out.println("Welcome " + userName);
       System.out.println("Enter digits below to complete the corresponding actions: ");
       System.out.println("1: View Menu\n 2: Place Order\n 3: Check Order Status\n 4: Log Out");
