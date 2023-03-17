@@ -26,12 +26,6 @@ public class OrderClient
         orderImpl = OrderHelper.narrow(ncRef.resolve_str(name));
 
         System.out.println("Obtained a handle on server object: " + orderImpl);
-        // System.out.println(orderImpl.view_menu());
-		    // short a = 5;
-		    // System.out.println(orderImpl.place_order("ammar", a, a));
-		    // System.out.println(orderImpl.check_order_status("ammar"));
-		    // System.out.println(orderImpl.view_current_orders());
-        // orderImpl.shutdown();
         programLoop(orderImpl);
 
 	    } catch (Exception e) {
