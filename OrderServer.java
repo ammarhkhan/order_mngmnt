@@ -79,8 +79,13 @@ class OrderImpl extends OrderPOA {
     return "Num Orders: " + numOrders; 
   }
 
-  public void login(String userName) {
+  public boolean login(String userName) {
+    if(usersLoggedIn.contains(userName)) {
+      return false;
+    }
+    
     usersLoggedIn.add(userName);
+    return true;
   }
 
   // implement check_order_status() method

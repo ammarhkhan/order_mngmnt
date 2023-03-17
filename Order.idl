@@ -5,7 +5,7 @@ module OrderApp{
 		string place_order(in string usrName, in short friedChickenQuant, in short colaQuant);
 		string check_order_status(in string usrName);
 		string view_current_orders();
-		void login(in string userName);
+		boolean login(in string userName);
 		boolean is_manager_logged_in();
   		oneway void shutdown();
 	};

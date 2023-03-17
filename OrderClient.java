@@ -39,22 +39,19 @@ public class OrderClient
 
     System.out.println("Enter username to log in: ");
 		String userName = getInput();
+    boolean logInResult = orderImpl.login(userName);
 
-    if(userName.equals("manager")){
-      if(orderImpl.is_manager_logged_in()){
-        System.out.println("Manager Already Logged In");
+    if(logInResult) {
+      if (userName.equals("manager")) {
+        System.out.println("Welcome Manager");
       } else {
         orderImpl.login(userName);
-        System.out.println("Welcome Manager");
+        System.out.println("Welcome " + userName);
+        customerLogic(userInput, userName);
       }
-      
     } else {
-      orderImpl.login(userName);
-      System.out.println("Welcome " + userName);
-      customerLogic(userInput, userName);
-
-    }
-    
+      System.out.println( userName + " Already Logged In");
+    }    
 	}
 
   public static String getInput() throws IOException {
