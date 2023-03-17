@@ -2,6 +2,7 @@ import OrderApp.*;
 import org.omg.CosNaming.*;
 import org.omg.CosNaming.NamingContextPackage.*;
 import org.omg.CORBA.*;
+import java.io.*;
 
 public class OrderClient
 {
@@ -25,28 +26,69 @@ public class OrderClient
         orderImpl = OrderHelper.narrow(ncRef.resolve_str(name));
 
         System.out.println("Obtained a handle on server object: " + orderImpl);
-        System.out.println(orderImpl.view_menu());
-		    short a = 5;
-		    System.out.println(orderImpl.place_order("ammar", a, a));
-		    System.out.println(orderImpl.check_order_status("ammar"));
-		    System.out.println(orderImpl.view_current_orders());
-        orderImpl.shutdown();
+        // System.out.println(orderImpl.view_menu());
+		    // short a = 5;
+		    // System.out.println(orderImpl.place_order("ammar", a, a));
+		    // System.out.println(orderImpl.check_order_status("ammar"));
+		    // System.out.println(orderImpl.view_current_orders());
+        // orderImpl.shutdown();
+        programLoop(orderImpl);
 
-	} catch (Exception e) {
-          System.out.println("ERROR : " + e) ;
-	  e.printStackTrace(System.out);
-	  }
+	    } catch (Exception e) {
+        System.out.println("ERROR : " + e);
+	      e.printStackTrace(System.out);
+	    }
     }
 
-	private void programLoop(Order orderimpl){
+	private static void programLoop(Order orderimpl) throws IOException {
 		int userInput = 0;
 
-    while(userInput != 5) {
+    System.out.println("Enter username to log in: ");
+		String userName = getInput();
 
-      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		  String s = br.readLine();
+    if(userName.equals("manager")){
+      System.out.println("Welcome Manager");
+    } else {
+      System.out.println("Welcome " + userName);
+      System.out.println("Enter digits below to complete the corresponding actions: ");
+      System.out.println("1: View Menu\n 2: Place Order\n 3: Check Order Status\n 4: Log Out");
+
+      while(userInput != 4) {
+        userInput = Integer.valueOf(getInput());
+
+        switch(userInput) {
+          case 1:
+            System.out.println(orderImpl.view_menu());
+            break;
+          case 2:
+            short a = 5;
+            System.out.println(orderImpl.place_order("ammar", a, a));
+            break;
+          case 3: 
+            System.out.println(orderImpl.check_order_status("ammar"));
+            break;
+          case 4: 
+            orderImpl.shutdown();
+            break;
+        }
+
+      }
+
     }
+    
 
+    // while(userInput != 5) {
+
+    //   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//   String s = br.readLine();
+    // }
+
+	}
+
+  	public static String getInput() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String s = br.readLine();
+		return s;
 	}
 
 }
