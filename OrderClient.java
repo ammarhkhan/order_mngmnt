@@ -32,10 +32,10 @@ public class OrderClient
 		    System.out.println(orderImpl.view_current_orders());
         orderImpl.shutdown();
 
-	} catch (Exception e) {
-          System.out.println("ERROR : " + e) ;
-	  e.printStackTrace(System.out);
-	  }
+	    } catch (Exception e) {
+        System.out.println("ERROR : " + e) ;
+	      e.printStackTrace(System.out);
+	    }
     }
 
 	private void programLoop(Order orderimpl){
