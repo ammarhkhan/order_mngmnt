@@ -51,7 +51,7 @@ public class OrderClient
     } else {
       orderImpl.login(userName);
       System.out.println("Welcome " + userName);
-      customerLogic(userInput);
+      customerLogic(userInput, userName);
 
     }
     
@@ -63,7 +63,7 @@ public class OrderClient
 		return s;
 	}
 
-  public static void customerLogic(int userInput) throws IOException {
+  public static void customerLogic(int userInput, String userName) throws IOException {
     while(userInput != 4) {
       System.out.println("\nEnter digits below to complete the corresponding actions: ");
       System.out.println(" 1: View Menu\n 2: Place Order\n 3: Check Order Status\n 4: Log Out");
@@ -75,10 +75,10 @@ public class OrderClient
           break;
         case 2:
           short a = 5;
-          System.out.println(orderImpl.place_order("ammar", a, a));
+          System.out.println(orderImpl.place_order(userName, a, a));
           break;
         case 3: 
-          System.out.println(orderImpl.check_order_status("ammar"));
+          System.out.println(orderImpl.check_order_status(userName));
           break;
         case 4: 
           orderImpl.shutdown();
