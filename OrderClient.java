@@ -44,6 +44,20 @@ public class OrderClient
     if(logInResult) {
       if (userName.equals("manager")) {
         System.out.println("Welcome Manager");
+        while(userInput != 2) {
+          System.out.println("\nEnter digits below to complete the corresponding actions: ");
+          System.out.println(" 1: View Current Orders\n 2: Log Out");
+          userInput = Integer.valueOf(getInput());
+
+          switch(userInput) {
+            case 1:
+              System.out.println(orderImpl.view_current_orders());
+              break;
+            case 2:
+              //Log out
+              break;
+          }
+        }
       } else {
         orderImpl.login(userName);
         System.out.println("Welcome " + userName);
