@@ -6,7 +6,7 @@ module OrderApp{
 		string check_order_status(in string usrName);
 		string view_current_orders();
 		boolean login(in string userName);
-		boolean is_manager_logged_in();
+		void logout(in string userName);
   		oneway void shutdown();
 	};
 };	

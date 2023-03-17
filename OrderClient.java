@@ -54,7 +54,7 @@ public class OrderClient
               System.out.println(orderImpl.view_current_orders());
               break;
             case 2:
-              //Log out
+              orderImpl.logout(userName);
               break;
           }
         }
@@ -92,7 +92,7 @@ public class OrderClient
           System.out.println(orderImpl.check_order_status(userName));
           break;
         case 4: 
-          orderImpl.shutdown();
+          orderImpl.logout(userName);
           break;
       }
     }

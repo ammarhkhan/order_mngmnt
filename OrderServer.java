@@ -99,8 +99,8 @@ class OrderImpl extends OrderPOA {
   }
 
   // implement check_order_status() method
-  public boolean is_manager_logged_in() {
-    return usersLoggedIn.contains("manager"); 
+  public void logout(String userName) {
+    usersLoggedIn.remove(userName); 
   }
     
   // implement shutdown() method
