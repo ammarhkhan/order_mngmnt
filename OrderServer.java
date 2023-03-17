@@ -59,24 +59,34 @@ class OrderImpl extends OrderPOA {
 
   // implement place_order() method
   public String place_order(String usrName, short friedChickenQuant, short colaQuant) {
-	short totalPrice = (short) ((friedChickenQuant * chickenPrice) + (colaQuant * colaPrice));
-	OrderStatus order = new OrderStatus(usrName, friedChickenQuant, colaQuant, totalPrice);
-	currentOrders.put(usrName, order);
-	System.out.println("Price " + totalPrice);
+	  short totalPrice = (short) ((friedChickenQuant * chickenPrice) + (colaQuant * colaPrice));
+	  OrderStatus order = new OrderStatus(usrName, friedChickenQuant, colaQuant, totalPrice);
+	  currentOrders.put(usrName, order);
     return "Order placed";
   }
 
   // implement check_order_status() method
   public String check_order_status(String usrName) {
-	OrderStatus currentOrder = currentOrders.get(usrName);
+	  OrderStatus currentOrder = currentOrders.get(usrName);
     return "Order Status:\n\nCustomer: " + usrName + "\nChicken Ordered: " + currentOrder.getfriedChickenQuant() + "\nCola Ordered: " + currentOrder.getcolaQuant() +
 	"\nTotal Price: " + currentOrder.gettotalPrice();
   }
 
-  // implement check_order_status() method
+  // implement view_current_orders() method
   public String view_current_orders() {
-	  int numOrders = currentOrders.size();
-    return "Num Orders: " + numOrders; 
+    StringBuilder str = new StringBuilder();
+    str.append("Current Number of Orders: " + currentOrders.size());
+    str.append("\nCurrent Orders: ");
+
+    for (String userName : currentOrders.keySet()) {
+      OrderStatus currentOrder = currentOrders.get(userName);
+      str.append("\nUserName: " + userName);
+      str.append("\n\tChicken Order: " + currentOrder.getfriedChickenQuant());
+      str.append("\n\tCola Order: " + currentOrder.getcolaQuant());
+      str.append("\n\tPrice: " + currentOrder.gettotalPrice());
+    }
+
+    return str.toString(); 
   }
 
   public boolean login(String userName) {
