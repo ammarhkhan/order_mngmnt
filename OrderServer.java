@@ -59,6 +59,9 @@ class OrderImpl extends OrderPOA {
 
   // implement place_order() method
   public String place_order(String usrName, short friedChickenQuant, short colaQuant) {
+    if(currentOrders.containsKey(usrName)){
+      return "This user already has an active order";
+    }
 	  short totalPrice = (short) ((friedChickenQuant * chickenPrice) + (colaQuant * colaPrice));
 	  OrderStatus order = new OrderStatus(usrName, friedChickenQuant, colaQuant, totalPrice);
 	  currentOrders.put(usrName, order);
