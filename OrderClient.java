@@ -85,8 +85,11 @@ public class OrderClient
           System.out.println(orderImpl.view_menu());
           break;
         case 2:
-          short a = 5;
-          System.out.println(orderImpl.place_order(userName, a, a));
+          System.out.println("\nHow much fried chicken do you want to order?");
+          short chickenOrder = Short.parseShort(getInput());
+          System.out.println("\nHow much cola do you want to order?");
+          short colaOrder = Short.parseShort(getInput());
+          System.out.println(orderImpl.place_order(userName, chickenOrder, colaOrder));
           break;
         case 3: 
           System.out.println(orderImpl.check_order_status(userName));
