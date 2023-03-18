@@ -74,6 +74,14 @@ public class OrderClient
 		return s;
 	}
 
+  public static void placeOrder(String userName) throws IOException {
+    System.out.println("\nHow much fried chicken do you want to order?");
+    short chickenOrder = Short.parseShort(getInput());
+    System.out.println("\nHow much cola do you want to order?");
+    short colaOrder = Short.parseShort(getInput());
+    System.out.println(orderImpl.place_order(userName, chickenOrder, colaOrder));
+	}
+
   public static void customerLogic(int userInput, String userName) throws IOException {
     while(userInput != 4) {
       System.out.println("\nEnter digits below to complete the corresponding actions: ");
@@ -85,11 +93,7 @@ public class OrderClient
           System.out.println(orderImpl.view_menu());
           break;
         case 2:
-          System.out.println("\nHow much fried chicken do you want to order?");
-          short chickenOrder = Short.parseShort(getInput());
-          System.out.println("\nHow much cola do you want to order?");
-          short colaOrder = Short.parseShort(getInput());
-          System.out.println(orderImpl.place_order(userName, chickenOrder, colaOrder));
+          placeOrder(userName);
           break;
         case 3: 
           System.out.println(orderImpl.check_order_status(userName));
