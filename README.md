@@ -31,7 +31,6 @@ java --add-modules java.se.ee AuctionClient -ORBInitialPort 1050 -ORBInitialHost
 ```
 
 //ToDo: 
-// Take quantities as inputs
 // ask for username when checking oders
 // only let customer place one order
 // check order status error notification
