@@ -67,9 +67,13 @@ class OrderImpl extends OrderPOA {
 
   // implement check_order_status() method
   public String check_order_status(String usrName) {
-	  OrderStatus currentOrder = currentOrders.get(usrName);
-    return "Order Status:\n\nCustomer: " + usrName + "\nChicken Ordered: " + currentOrder.getfriedChickenQuant() + "\nCola Ordered: " + currentOrder.getcolaQuant() +
-	"\nTotal Price: " + currentOrder.gettotalPrice();
+    if(currentOrders.containsKey(usrName)){
+      OrderStatus currentOrder = currentOrders.get(usrName);
+      return "Order Status:\n\nCustomer: " + usrName + "\nChicken Ordered: " + currentOrder.getfriedChickenQuant() + "\nCola Ordered: " + currentOrder.getcolaQuant() +
+	    "\nTotal Price: " + currentOrder.gettotalPrice();
+    }
+
+    return "No orders exist for this user";
   }
 
   // implement view_current_orders() method

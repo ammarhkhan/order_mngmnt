@@ -96,7 +96,9 @@ public class OrderClient
           placeOrder(userName);
           break;
         case 3: 
-          System.out.println(orderImpl.check_order_status(userName));
+          System.out.println("\nWhat user order would you like to check?");
+          String user = getInput();
+          System.out.println(orderImpl.check_order_status(user));
           break;
         case 4: 
           orderImpl.logout(userName);
